@@ -1,0 +1,20 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="setup.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="search.js"></script>
+    <script src="createHTML.js"></script>
+    <title>Jeopary Questions</title>
+</head>
+<body>
+    <h2>Enter a category in the search box to see questions for that category. Or go directly to a popular category</h2>
+    <input type="text" placeholder="Search by category" id="search_bar"><button type="button" id=search_button>Submit</button>
+    <script>$( "#search_button" ).click(function() {
+        let query = $( "#search_bar" ).val();
+        searchCategory(query);
+    })</script>
+</body>
+</html>
