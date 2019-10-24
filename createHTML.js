@@ -42,7 +42,7 @@ function createTable() {
             $row.append($question_info)
             $row.append($text_display);
             // when box is clicked, swap between question and answer
-            $row.click(function() {
+            $row.on('click', function() {
                 $text_display.text() == $row.data("answer") 
                   ? $text_display.text($row.data("question")) 
                   : $text_display.text($row.data("answer"));
