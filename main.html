@@ -3,18 +3,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="setup.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="search.js"></script>
+    <link rel="stylesheet" type="text/css" href="skeleton.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <script src="setup.js"></script>
+    <script src="setFilters.js"></script>
     <script src="createHTML.js"></script>
     <title>Jeopary Questions</title>
+    <style>
+            
+            .value_container {
+              width: 20%;
+            }
+            
+            .slider {
+              -webkit-appearance: none;
+              width: 100%;
+              height: 25px;
+              background: #d3d3d3;
+              outline: none;
+            }
+            
+            .slider::-webkit-slider-thumb {
+              -webkit-appearance: none;
+              appearance: none;
+              width: 25px;
+              height: 25px;
+              background: rgb(0, 100, 200);
+              cursor: pointer;
+            }
+            
+            .slider::-moz-range-thumb {
+              width: 25px;
+              height: 25px;
+              background: rgb(0, 100, 200);
+              cursor: pointer;
+            }
+        </style>
 </head>
 <body>
-    <h2>Enter a category in the search box to see questions for that category. Or go directly to a popular category</h2>
-    <input type="text" placeholder="Search by category" id="search_bar"><button type="button" id=search_button>Submit</button>
-    <script>$( "#search_button" ).click(function() {
-        let query = $( "#search_bar" ).val();
-        searchCategory(query);
-    })</script>
+    <div class="category_container">
+        <label>Category Name: </label><br>
+        <input type="text" placeholder="Search by category" id="category_field" class="inputbox">
+    </div>
+
+    <div class="value_container">
+        <label> Value: <span id="value_display"></span></label><br>
+        <input type="range" min="200" max="1000" value="600" step="200" class="slider" id="value_slider">
+    </div>
+
+    <div class="date_container">
+        <label>Date Range: </label><br>
+        <input type="text" name="daterange"/>
+    </div>
+
+    <div class="checkbox_container">
+        <label>Filters: </label>
+        <br>
+        <input type="checkbox" id="category_box" name="category_box">
+        <label for="category_box">Category</label>
+        <br>
+        <input type="checkbox" id="value_box" name="value_box">
+        <label for="value_box">Value</label>
+        <br>
+        <input type="checkbox" id="date_box" name="date_box">
+        <label for="date_box">Date</label>
+    </div>
+
+    <button type="button" id=search_button>Search</button>
+    <br><br>
+  
+    <script>
+        $( "#search_button" ).click(createTable);
+
+        $(function() {
+            $('input[name="daterange"]').daterangepicker({
+                opens: 'left'
+            }, function(start, end) {
+                min_date = start.format("YYYY-MM-DD");
+                max_date = end.format("YYYY-MM-DD");
+            });
+        });
+
+        $value_slider = $( "#value_slider" );
+        $value_display = $( "#value_display" );
+        $value_display.html(value);
+        $value_slider.on('input', function() {
+            $value_display.html(this.value);
+            value = this.value;
+        });
+    </script>
 </body>
 </html>

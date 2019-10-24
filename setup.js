@@ -1,8 +1,10 @@
 var home = true;
-var category_id = null;
-var api_result = [];
 var dict = {};
 var dictFilled = false;
+var category_id = null;
+var value = 600;
+var min_date = null;
+var max_date = null;
 
 const MAX_OFFSET = 18400
 for (let offset = 0; offset <= MAX_OFFSET; offset += 100) {
