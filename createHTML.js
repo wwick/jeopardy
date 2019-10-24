@@ -1,6 +1,6 @@
 function createTable() {
     // create structure to hold clues
-    let $table = $("<div>", {id:"result_table"});
+    let $table = $("<div>", {class: "container"});
     let url = "http://jservice.io/api/clues?";
     
     // only apply filters if boxes are checked

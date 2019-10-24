@@ -14,28 +14,25 @@
 
 </head>
 <body>
-    <h1>Jeopardy</h1>
+    <div class="container">
+	<br>
+        <h1>Jeopardy</h1>
 
     <!-- users can specify the title of the category they're interested in -->
-    <div class="category_container">
         <label>Category Name: </label><br>
         <input type="text" placeholder="Search by category" id="category_field" class="inputbox">
-    </div>
 
     <!-- users can specify how hard they want their questions to be -->
-    <div class="value_container">
+    <div class="slider_container">
         <label> Value: <span id="value_display"></span></label><br>
-        <input type="range" min="100" max="1000" value="600" step="100" class="slider" id="value_slider">
+        <input type="range" min="100" max="1000" value="500" step="100" class="slider" id="value_slider">
     </div>
 
     <!-- users can select range of date -->
-    <div class="date_container">
         <label>Date Range: </label><br>
-        <input type="text" name="daterange"/>
-    </div>
+        <input type="text" name="daterange"/><br>
 
     <!-- users can select which filters they wish to apply  -->
-    <div class="checkbox_container">
         <label>Filters: </label>
         <br>
         <input type="checkbox" id="category_box" name="category_box">
@@ -45,12 +42,11 @@
         <label for="value_box">Value</label>
         <br>
         <input type="checkbox" id="date_box" name="date_box">
-        <label for="date_box">Date</label>
-    </div>
+        <label for="date_box">Date</label><br>
 
     <!-- gets clues matching criteria from jservice -->
     <button type="button" id=search_button>Search</button>
-    <br><br>
+    </div><br>
   
     <script>
         $( "#search_button" ).click(createTable);
