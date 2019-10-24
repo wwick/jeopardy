@@ -9,27 +9,32 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <script src="setup.js"></script>
-    <script src="setFilters.js"></script>
     <script src="createHTML.js"></script>
     <title>Jeopardy</title>
 
 </head>
 <body>
+    <h1>Jeopardy</h1>
+
+    <!-- users can specify the title of the category they're interested in -->
     <div class="category_container">
         <label>Category Name: </label><br>
         <input type="text" placeholder="Search by category" id="category_field" class="inputbox">
     </div>
 
+    <!-- users can specify how hard they want their questions to be -->
     <div class="value_container">
         <label> Value: <span id="value_display"></span></label><br>
         <input type="range" min="100" max="1000" value="600" step="100" class="slider" id="value_slider">
     </div>
 
+    <!-- users can select range of date -->
     <div class="date_container">
         <label>Date Range: </label><br>
         <input type="text" name="daterange"/>
     </div>
 
+    <!-- users can select which filters they wish to apply  -->
     <div class="checkbox_container">
         <label>Filters: </label>
         <br>
@@ -43,21 +48,25 @@
         <label for="date_box">Date</label>
     </div>
 
+    <!-- gets clues matching criteria from jservice -->
     <button type="button" id=search_button>Search</button>
     <br><br>
   
     <script>
         $( "#search_button" ).click(createTable);
 
+        // date range selector
         $(function() {
             $('input[name="daterange"]').daterangepicker({
                 opens: 'left'
             }, function(start, end) {
+                // sets min and max dates
                 min_date = start.format("YYYY-MM-DD");
                 max_date = end.format("YYYY-MM-DD");
             });
         });
 
+        // value changes when you move slider
         $value_slider = $( "#value_slider" );
         $value_display = $( "#value_display" );
         $value_display.html(value);
