@@ -25,7 +25,7 @@
     <!-- users can specify how hard they want their questions to be -->
     <div class="slider_container">
         <label> Value: <span id="value_display"></span></label><br>
-        <input type="range" min="100" max="1000" value="500" step="100" class="slider" id="value_slider">
+        <input type="range" min="100" max="1000" value="600" step="100" class="slider" id="value_slider">
     </div>
 
     <!-- users can select range of date -->
@@ -65,7 +65,7 @@
         // value changes when you move slider
         $value_slider = $( "#value_slider" );
         $value_display = $( "#value_display" );
-        $value_display.html(value);
+        $value_display.html(value );
         $value_slider.on('input', function() {
             $value_display.html(this.value);
             value = this.value;
