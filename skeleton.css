@@ -26,7 +26,7 @@
 */
 
 .clue {
-  width: 50%;
+  width: 80%;
   border: black;
   padding: 10px;
   background: rgb(180, 180, 180);
@@ -34,7 +34,7 @@
 }
 
 .value_container {
-  width: 20%;
+  width: 300px;
 }
 
 .slider {
