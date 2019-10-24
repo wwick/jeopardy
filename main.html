@@ -18,21 +18,21 @@
 	<br>
         <h1>Jeopardy</h1>
 
-    <!-- users can specify the title of the category they're interested in -->
+        <!-- users can specify the title of the category they're interested in -->
         <label>Category Name: </label><br>
         <input type="text" placeholder="Search by category" id="category_field" class="inputbox">
 
-    <!-- users can specify how hard they want their questions to be -->
-    <div class="slider_container">
-        <label> Value: <span id="value_display"></span></label><br>
-        <input type="range" min="100" max="1000" value="600" step="100" class="slider" id="value_slider">
-    </div>
+        <!-- users can specify how hard they want their questions to be -->
+        <div class="slider_container">
+            <label> Value: <span id="value_display"></span></label><br>
+            <input type="range" min="100" max="1000" value="600" step="100" class="slider" id="value_slider">
+        </div>
 
-    <!-- users can select range of date -->
+        <!-- users can select range of date -->
         <label>Date Range: </label><br>
-        <input type="text" name="daterange"/><br>
+        <input type="text" id="date_range" name="daterange"/><br>
 
-    <!-- users can select which filters they wish to apply  -->
+        <!-- users can select which filters they wish to apply  -->
         <label>Filters: </label>
         <br>
         <input type="checkbox" id="category_box" name="category_box">
@@ -44,8 +44,8 @@
         <input type="checkbox" id="date_box" name="date_box">
         <label for="date_box">Date</label><br>
 
-    <!-- gets clues matching criteria from jservice -->
-    <button type="button" id=search_button>Search</button>
+        <!-- gets clues matching criteria from jservice -->
+        <button type="button" id=search_button>Search</button>
     </div><br>
   
     <script>
@@ -54,7 +54,7 @@
         // date range selector
         $(function() {
             $('input[name="daterange"]').daterangepicker({
-                opens: 'left'
+                opens: 'right'
             }, function(start, end) {
                 // sets min and max dates
                 min_date = start.format("YYYY-MM-DD");
@@ -65,10 +65,9 @@
         // value changes when you move slider
         $value_slider = $( "#value_slider" );
         $value_display = $( "#value_display" );
-        $value_display.html(value );
+        $value_display.html($value_slider.val());
         $value_slider.on('input', function() {
             $value_display.html(this.value);
-            value = this.value;
         });
     </script>
 </body>

@@ -9,6 +9,7 @@ function createTable() {
         url += `category=${category_id}&`;
     }
     if ($( "#value_box" ).is(':checked')) {
+        let value = $( "#value_slider" ).val();
         url += `value=${value}&`;
     }
     if ($( "#date_box" ).is(':checked')) {
