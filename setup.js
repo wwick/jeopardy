@@ -2,7 +2,7 @@
 var home = true;
 var dict = {};
 var dictFilled = false;
-var value = 600;
+var value = 500;
 var min_date = null;
 var max_date = null;
 
