@@ -4,19 +4,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="setup.js"></script>
     <link rel="stylesheet" type="text/css" href="skeleton.css" />
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-    <script src="setup.js"></script>
-    <script src="createHTML.js"></script>
-    <title>Jeopardy</title>
+    <script src="loadQuestions.js"></script>
+    <title>Jeopardy!</title>
 
 </head>
 <body>
     <div id="critera" class="container">
 	<br>
-        <h1>Jeopardy</h1>
+        <h1>Jeopardy!</h1>
 
         <!-- users can specify the title of the category they're interested in -->
         <label>Category Name: </label><br>
@@ -48,7 +48,7 @@
     </div><br>
   
     <script>
-        $( document ).ready(loadCategories);
+        $( document ).ready(attachListeners);
     </script>
 </body>
 </html>

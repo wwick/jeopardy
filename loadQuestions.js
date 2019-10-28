@@ -17,9 +17,16 @@ function createTable() {
         url += `max_date=${max_date}&`;
     }
 
+    $( "#results" ).remove();
+    $( document.body ).append($table);
+
+    let $loading = $("<p>").text("loading clues...");
+    $table.append($loading);
+
     empty_result = true;
 
     $.getJSON(url, function(data) {
+        $loading.remove();
         $.each( data, function( _key, val)  {
             // filter HTML elements such as italics
             let question_text = val.question.replace(/<[^>]*>?/gm, '');
@@ -65,12 +72,12 @@ function createTable() {
         });
 
     }).then(function() {
-        $( "#results" ).remove();
+
+        // $loading.remove();
 
         if (empty_result) {
             $table.append($("<h3>", {text:"No results. Try adjusting search criteria"}));
         }
-        $( document.body ).append($table);
     });
 }
 
