@@ -14,12 +14,13 @@
 
 </head>
 <body>
-    <div class="container">
+    <div id="critera" class="container">
 	<br>
         <h1>Jeopardy</h1>
 
         <!-- users can specify the title of the category they're interested in -->
         <label>Category Name: </label><br>
+        <!-- <input type="text" placeholder="Search by category" id="category_field" class="inputbox"> -->
         <input type="text" placeholder="Search by category" id="category_field" class="inputbox">
 
         <!-- users can specify how hard they want their questions to be -->
@@ -43,32 +44,11 @@
         <br>
         <input type="checkbox" id="date_box" name="date_box">
         <label for="date_box">Date</label><br>
-
-        <!-- gets clues matching criteria from jservice -->
-        <button type="button" id=search_button>Search</button>
+        
     </div><br>
   
     <script>
-        $( "#search_button" ).click(createTable);
-
-        // date range selector
-        $(function() {
-            $('input[name="daterange"]').daterangepicker({
-                opens: 'right'
-            }, function(start, end) {
-                // sets min and max dates
-                min_date = start.format("YYYY-MM-DD");
-                max_date = end.format("YYYY-MM-DD");
-            });
-        });
-
-        // value changes when you move slider
-        $value_slider = $( "#value_slider" );
-        $value_display = $( "#value_display" );
-        $value_display.html($value_slider.val());
-        $value_slider.on('input', function() {
-            $value_display.html(this.value);
-        });
+        $( document ).ready(loadCategories);
     </script>
 </body>
 </html>
