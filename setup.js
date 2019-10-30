@@ -2,6 +2,7 @@
 var categories = {};
 var min_date = null;
 var max_date = null;
+const MIN_VALID_DATE = '11/26/1984';
 
 // there are between 18400 and 18500 categories
 const MAX_OFFSET = 18400
@@ -25,8 +26,8 @@ function attachListeners() {
   $(function() {
       $('input[name="daterange"]').daterangepicker({
           opens: 'right',
-          startDate: '11/26/1984',
-          minDate: '11/26/1984',
+          startDate: MIN_VALID_DATE,
+          minDate: MIN_VALID_DATE,
       }, function(start, end) {
           // sets min and max dates
           min_date = start.format("YYYY-MM-DD");
