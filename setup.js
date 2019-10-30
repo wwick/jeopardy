@@ -24,7 +24,9 @@ function attachListeners() {
   // date range selector
   $(function() {
       $('input[name="daterange"]').daterangepicker({
-          opens: 'right'
+          opens: 'right',
+          startDate: '11/26/1984',
+          minDate: '11/26/1984',
       }, function(start, end) {
           // sets min and max dates
           min_date = start.format("YYYY-MM-DD");

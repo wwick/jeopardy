@@ -31,8 +31,8 @@ function createTable() {
             // filter HTML elements such as italics
             let question_text = val.question.replace(/<[^>]*>?/gm, '');
             // if question has no text, skip it
-            if (question_text == "") {
-                return false;
+            if (question_text == "" || val.value == null) {
+                return;
             }
             empty_result = false;
             let answer_text = val.answer.replace(/<[^>]*>?/gm, '');
@@ -44,10 +44,8 @@ function createTable() {
             let $switch_display = $("<h6>").text("(show answer)");
             $switch_display.css("text-align", "center");
             let info_text = val.category.title.toTitleCase();
-            // gives clue value if clue value exists
-            if (val.value != null) {
-                info_text += " for " + val.value;
-            }
+            // appends clue value
+            info_text += " for " + val.value;
             // category and usually value serves as box title
             let $question_info = $("<h4>").text(info_text);
             $question_info.css("text-align", "center");
