@@ -1,24 +1,30 @@
-function createTable() {
+function createTable(useRandom) {
     // create structure to hold clues
     let $table = $("<div>", {class: "container", id:"results"});
-    let url = "http://jservice.io/api/clues?";
+    let url = "";
+
+    if (useRandom) {
+        url = "http://jservice.io/api/random?count=100";
+    } else {
+        url = "http://jservice.io/api/clues?";
     
-    // only apply filters if boxes are checked
-    if ($( "#category_box" ).is(':checked')) {
-        category_id = getCategory();
-        url += `category=${category_id}&`;
-    }
-    if ($( "#value_box" ).is(':checked')) {
-        let value = $( "#value_slider" ).val();
-        url += `value=${value}&`;
-    }
-    if ($( "#date_box" ).is(':checked')) {
-        min_date_text = $('input[name="daterange"]').val().substring(0,10);
-        max_date_text = $('input[name="daterange"]').val().substring(13);
-        min_date = parseDate(min_date_text);
-        max_date = parseDate(max_date_text);
-        url += `min_date=${min_date}&`;
-        url += `max_date=${max_date}&`;
+        // only apply filters if boxes are checked
+        if ($( "#category_box" ).is(':checked')) {
+            category_id = getCategory();
+            url += `category=${category_id}&`;
+        }
+        if ($( "#value_box" ).is(':checked')) {
+            let value = $( "#value_slider" ).val();
+            url += `value=${value}&`;
+        }
+        if ($( "#date_box" ).is(':checked')) {
+            min_date_text = $('input[name="daterange"]').val().substring(0,10);
+            max_date_text = $('input[name="daterange"]').val().substring(13);
+            min_date = parseDate(min_date_text);
+            max_date = parseDate(max_date_text);
+            url += `min_date=${min_date}&`;
+            url += `max_date=${max_date}&`;
+        }
     }
 
     $( "#results" ).remove();

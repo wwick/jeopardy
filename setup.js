@@ -1,5 +1,5 @@
 // cache for category id's
-var categories = {};
+let categories = {};
 
 // there are between 18400 and 18500 categories
 const MAX_OFFSET = 18400
@@ -15,9 +15,13 @@ for (let offset = 0; offset <= MAX_OFFSET; offset += 100) {
 
 function attachListeners() {
 
-  let $search_button = $("<button>", {type:"button", id:"search_button", text:"Search"});
-  $search_button.click(createTable);
-  $( "#critera" ).append($search_button);
+  $( "#search_button" ).click(function() {
+    createTable(false);
+  });
+
+  $( "#random_button" ).click(function() {
+    createTable(true);
+  });
 
   function setupDateRange() {
     // date range selector
