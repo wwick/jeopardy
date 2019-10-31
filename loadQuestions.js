@@ -13,6 +13,10 @@ function createTable() {
         url += `value=${value}&`;
     }
     if ($( "#date_box" ).is(':checked')) {
+        min_date_text = $('input[name="daterange"]').val().substring(0,10);
+        max_date_text = $('input[name="daterange"]').val().substring(13);
+        min_date = parseDate(min_date_text);
+        max_date = parseDate(max_date_text);
         url += `min_date=${min_date}&`;
         url += `max_date=${max_date}&`;
     }
@@ -87,6 +91,13 @@ function getCategory() {
         return categories[query];
     }
     return "999999";
+}
+
+function parseDate(date) {
+    let day = date.substring(0,2);
+    let month = date.substring(3,5)
+    let year = date.substring(6);
+    return day + "-" + month + "-" + year;
 }
 
 

@@ -1,8 +1,5 @@
-// global variables
+// cache for category id's
 var categories = {};
-var min_date = null;
-var max_date = null;
-const MIN_VALID_DATE = '11/26/1984';
 
 // there are between 18400 and 18500 categories
 const MAX_OFFSET = 18400
@@ -22,18 +19,19 @@ function attachListeners() {
   $search_button.click(createTable);
   $( "#critera" ).append($search_button);
 
-  // date range selector
-  $(function() {
-      $('input[name="daterange"]').daterangepicker({
-          opens: 'right',
-          startDate: MIN_VALID_DATE,
-          minDate: MIN_VALID_DATE,
-      }, function(start, end) {
-          // sets min and max dates
-          min_date = start.format("YYYY-MM-DD");
-          max_date = end.format("YYYY-MM-DD");
-      });
-  });
+  function setupDateRange() {
+    // date range selector
+    $('input[name="daterange"]').daterangepicker({
+      startDate: `01/01/${$min_year_slider.val()}`,
+      endDate: `12/31/${$max_year_slider.val()}`,
+      minDate: `01/01/${$min_year_slider.val()}`,
+      maxDate: `12/31/${$max_year_slider.val()}`,
+    }, function(start, end) {
+      // sets min and max dates
+      min_date = start.format("YYYY-MM-DD");
+      max_date = end.format("YYYY-MM-DD");
+    });
+  }
 
   // value changes when you move slider
   $value_slider = $( "#value_slider" );
@@ -42,6 +40,40 @@ function attachListeners() {
   $value_slider.on('input', function() {
       $value_display.html(this.value);
   });
+
+  $min_year_slider = $( "#min_year_slider ");
+  $min_year_display = $( "#min_year_display ");
+  $max_year_slider = $( "#max_year_slider ");
+  $max_year_display = $( "#max_year_display ");
+  $min_year_display.html($min_year_slider.val());
+  $max_year_display.html($max_year_slider.val());
+
+  // update min year display when max year slider moves
+  $min_year_slider.on('input', function() {
+    // ensure that min year isn't greater than max year
+    if (this.value > $max_year_slider.val()) {
+      $min_year_slider.val($max_year_slider.val());
+    } else {
+      $min_year_display.html(this.value);
+    }
+    // update date range picker
+    setupDateRange();
+  });
+
+  // update max year display when max year slider moves
+  $max_year_slider.on('input', function() {
+    // ensure that max year isn't less than min year
+    if (this.value < $min_year_slider.val()) {
+      $max_year_slider.val($min_year_slider.val());
+    } else {
+      $max_year_display.html(this.value);
+    }
+    // update date range picker
+    setupDateRange();
+  });
+
+  setupDateRange();
+
 }
 
 // https://stackoverflow.com/questions/196972/convert-string-to-title-case-with-javascript

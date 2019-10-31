@@ -31,7 +31,19 @@
 
         <!-- users can select range of date -->
         <label>Date Range: </label><br>
-        <input type="text" id="date_range" name="daterange"/><br>
+        <input type="text" id="date_range" name="daterange"/>
+
+        <!-- users can specify how hard they want their questions to be -->
+        <div class="slider_container">
+            <label> Min Year: <span id="min_year_display"></span></label><br>
+            <input type="range" min="1984" max="2016" value="1984" step="1" class="slider" id="min_year_slider">
+        </div>
+
+        <!-- users can specify how hard they want their questions to be -->
+        <div class="slider_container">
+            <label> Max Year: <span id="max_year_display"></span></label><br>
+            <input type="range" min="1984" max="2016" value="2016" step="1" class="slider" id="max_year_slider">
+        </div>
 
         <!-- users can select which filters they wish to apply  -->
         <label>Filters: </label>
