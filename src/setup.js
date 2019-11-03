@@ -15,14 +15,17 @@ for (let offset = 0; offset <= MAX_OFFSET; offset += 100) {
 
 function attachListeners() {
 
+  // load questions according to criteria
   $( "#search_button" ).click(function() {
     createTable(false);
   });
 
+  // load random questions
   $( "#random_button" ).click(function() {
     createTable(true);
   });
 
+  // date range picker
   function setupDateRange() {
     // date range selector
     $('input[name="daterange"]').daterangepicker({
@@ -30,10 +33,6 @@ function attachListeners() {
       endDate: `12/31/${$max_year_slider.val()}`,
       minDate: `01/01/${$min_year_slider.val()}`,
       maxDate: `12/31/${$max_year_slider.val()}`,
-    }, function(start, end) {
-      // sets min and max dates
-      min_date = start.format("YYYY-MM-DD");
-      max_date = end.format("YYYY-MM-DD");
     });
   }
 
@@ -75,7 +74,6 @@ function attachListeners() {
   });
 
   setupDateRange();
-
 }
 
 // https://stackoverflow.com/questions/196972/convert-string-to-title-case-with-javascript

@@ -1,6 +1,6 @@
 # Jeopardy!
 
-Retrieves clues from [jService](http://jservice.io) and displays them in an easy-to-read format
+Retrieves clues from [jService](http://jservice.io) and displays them in an easy-to-read format.
 
 ## Link
 
@@ -8,4 +8,4 @@ Retrieves clues from [jService](http://jservice.io) and displays them in an easy
 
 ## Usage
 
-By default, no filters will be applied. In order to apply a filter, modify the search criteria, select the box next to the desired filter, and click "search".
+By default, no filters will be applied. In order to apply a filter, modify the search criteria, select the box next to the desired filter, and click "search". If you request random questions, then 
