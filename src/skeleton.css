@@ -223,7 +223,7 @@ input[type="button"] {
   border: 1px solid #bbb;
   cursor: pointer;
   box-sizing: border-box;
-  border-width: 2.5px;
+  border-width: 2px;
   border-color: rgb(0, 100, 200);
 }
 .button:hover,
