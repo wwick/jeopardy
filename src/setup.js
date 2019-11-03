@@ -17,12 +17,12 @@ function attachListeners() {
 
   // load questions according to criteria
   $( "#search_button" ).click(function() {
-    createTable(false);
+    loadClues(false);
   });
 
   // load random questions
   $( "#random_button" ).click(function() {
-    createTable(true);
+    loadClues(true);
   });
 
   // date range picker

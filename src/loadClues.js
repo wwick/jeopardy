@@ -1,6 +1,6 @@
-function createTable(useRandom) {
+function loadClues(useRandom) {
     // create structure to hold clues
-    let $table = $("<div>", {class: "container", id:"results"});
+    let $results = $(" #results" );
     let url = "";
 
     if (useRandom) {
@@ -27,11 +27,11 @@ function createTable(useRandom) {
         }
     }
 
-    $( "#results" ).remove();
-    $( document.body ).append($table);
+    $results.empty();
+    $( document.body ).append($results);
 
     let $loading = $("<p>").text("loading clues...");
-    $table.append($loading);
+    $results.append($loading);
 
     empty_result = true;
 
@@ -75,8 +75,8 @@ function createTable(useRandom) {
                     $switch_display.text("(show question)");
                 }
             });
-            $table.append($row);
-            $table.append("<br>");
+            $results.append($row);
+            $results.append("<br>");
         });
 
     }).then(function() {
@@ -84,7 +84,7 @@ function createTable(useRandom) {
         // $loading.remove();
 
         if (empty_result) {
-            $table.append($("<h3>", {text:"No results. Try adjusting search criteria"}));
+            $results.append($("<h3>", {text:"No results. Try adjusting search criteria"}));
         }
     });
 }
