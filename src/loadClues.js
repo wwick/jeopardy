@@ -45,7 +45,7 @@ function loadClues(useRandom) {
                 return;
             }
             empty_result = false;
-            let answer_text = "What is " + val.answer.replace(/<[^>]*>?/gm, '') + "?";
+            let answer_text = "What/Who is " + val.answer.replace(/<[^>]*>?/gm, '') + "?";
             // create box
             let $row = $("<div>", {class:"clue", id:val.id});
             // box initially displays question text
