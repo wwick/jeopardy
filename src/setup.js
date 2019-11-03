@@ -25,6 +25,24 @@ function attachListeners() {
     loadClues(true);
   });
 
+  // automatically applies category filter when user provides category text
+  $( "#category_field" ).on("keyup", function() {
+    if (this.value === "") {
+      $( "#category_box" ).prop("checked", false);
+    } else {
+      $( "#category_box" ).prop("checked", true);
+    }
+  });
+
+  // value changes when you move slider
+  $value_slider = $( "#value_slider" );
+  $value_display = $( "#value_display" );
+  $value_display.html($value_slider.val());
+  $value_slider.on('input', function() {
+      $value_display.html(this.value);
+      $( "#value_box" ).prop("checked", true);
+  });
+  
   // date range picker
   function setupDateRange() {
     // date range selector
@@ -33,16 +51,10 @@ function attachListeners() {
       endDate: `12/31/${$max_year_slider.val()}`,
       minDate: `01/01/${$min_year_slider.val()}`,
       maxDate: `12/31/${$max_year_slider.val()}`,
+    }, function() {
+      $( "#date_box" ).prop("checked", true);
     });
   }
-
-  // value changes when you move slider
-  $value_slider = $( "#value_slider" );
-  $value_display = $( "#value_display" );
-  $value_display.html($value_slider.val());
-  $value_slider.on('input', function() {
-      $value_display.html(this.value);
-  });
 
   $min_year_slider = $( "#min_year_slider ");
   $min_year_display = $( "#min_year_display ");
@@ -51,6 +63,8 @@ function attachListeners() {
   $min_year_display.html($min_year_slider.val());
   $max_year_display.html($max_year_slider.val());
 
+  
+
   // update min year display when max year slider moves
   $min_year_slider.on('input', function() {
     // ensure that min year isn't greater than max year
@@ -58,6 +72,7 @@ function attachListeners() {
       $min_year_slider.val($max_year_slider.val());
     }
     $min_year_display.html(this.value);
+    $( "#date_box" ).prop("checked", true);
     // update date range picker
     setupDateRange();
   });
@@ -69,6 +84,7 @@ function attachListeners() {
       $max_year_slider.val($min_year_slider.val());
     }
     $max_year_display.html(this.value);
+    $( "#date_box" ).prop("checked", true);
     // update date range picker
     setupDateRange();
   });

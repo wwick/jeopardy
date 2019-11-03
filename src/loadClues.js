@@ -45,13 +45,13 @@ function loadClues(useRandom) {
                 return;
             }
             empty_result = false;
-            let answer_text = val.answer.replace(/<[^>]*>?/gm, '');
+            let answer_text = "What is " + val.answer.replace(/<[^>]*>?/gm, '') + "?";
             // create box
             let $row = $("<div>", {class:"clue", id:val.id});
             // box initially displays question text
             let $text_display = $("<p>").text(question_text);
             $text_display.css("text-align", "center");
-            let $switch_display = $("<h6>").text("(show answer)");
+            let $switch_display = $("<h6>").text("(flip)");
             $switch_display.css("text-align", "center");
             let info_text = val.category.title.toTitleCase();
             // appends clue value
@@ -69,10 +69,10 @@ function loadClues(useRandom) {
             $row.on('click', function() {
                 if ($text_display.text() == $row.data("answer")) {
                     $text_display.text($row.data("question"));
-                    $switch_display.text("(show answer)");
+                    $switch_display.text("(flip)");
                 } else {
                     $text_display.text($row.data("answer"));
-                    $switch_display.text("(show question)");
+                    $switch_display.text("(show clue)");
                 }
             });
             $results.append($row);
@@ -91,12 +91,16 @@ function loadClues(useRandom) {
 
 function getCategory() {
     let query = $( "#category_field" ).val();
-    query = query.toLowerCase();
-    // wait for setup to fill dict with categories
-    if (query in categories) {
-        return categories[query];
+    if (query === "") {
+        return "";
+    } else {
+        query = query.toLowerCase();
+        // wait for setup to fill dict with categories
+        if (query in categories) {
+            return categories[query];
+        }
+        return "999999";
     }
-    return "999999";
 }
 
 function parseDate(date) {
