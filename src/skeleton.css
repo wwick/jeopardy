@@ -224,7 +224,7 @@ input[type="button"] {
   cursor: pointer;
   box-sizing: border-box;
   border-width: 2.5px;
-  border-color: black;
+  border-color: rgb(0, 100, 200);
 }
 .button:hover,
 button:hover,
