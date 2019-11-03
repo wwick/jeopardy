@@ -57,18 +57,14 @@
         <input type="checkbox" id="date_box" name="date_box">
         <label for="date_box">Date</label><br>
 
-        <button type="button" id="search_button">Search by Filters</button> <button type="button" id="random_button">Random Clue</button>
+        <button type="button" id="search_button">Search by Filters</button> <button type="button" id="random_button">Random (Unfiltered)</button>
 
     </div><br>
 
     <div id="results" class="container">
   
     <script>
-        $( document ).ready(function() {
-            attachListeners();
-            let audio = new Audio('src/theme_song.mp3');
-            audio.play();
-        });
+        $( document ).ready(attachListeners);
     </script>
 </body>
 </html>
