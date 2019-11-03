@@ -57,9 +57,8 @@ function attachListeners() {
     // ensure that min year isn't greater than max year
     if (this.value > $max_year_slider.val()) {
       $min_year_slider.val($max_year_slider.val());
-    } else {
-      $min_year_display.html(this.value);
     }
+    $min_year_display.html(this.value);
     // update date range picker
     setupDateRange();
   });
@@ -69,9 +68,8 @@ function attachListeners() {
     // ensure that max year isn't less than min year
     if (this.value < $min_year_slider.val()) {
       $max_year_slider.val($min_year_slider.val());
-    } else {
-      $max_year_display.html(this.value);
     }
+    $max_year_display.html(this.value);
     // update date range picker
     setupDateRange();
   });
