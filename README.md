@@ -16,6 +16,6 @@ Upon loading, the site immediately iterates through the categories on Jservice, 
 
 ## Libraries
 
-- [JQuery](https://jquery.com)
+- [jQuery](https://jquery.com)
 - [Date Range Picker](https://www.daterangepicker.com)
 - [Skeleton](http://getskeleton.com)
