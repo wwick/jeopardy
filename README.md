@@ -4,7 +4,7 @@ Retrieves clues from [jService](http://jservice.io) and displays them in an easy
 
 ## Link
 
-<http://ec2-52-14-191-6.us-east-2.compute.amazonaws.com/~wwick/git/jeopardy/index.html>
+<http://ec2-52-14-191-6.us-east-2.compute.amazonaws.com/~wwick/jeopardy>
 
 ## Usage
 
